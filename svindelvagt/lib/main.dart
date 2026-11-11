@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'tjekliste.dart';
+import 'sikre_ord.dart';
+
 void main() {
   runApp(const SvindelvagtApp());
 }
@@ -15,7 +17,7 @@ class SvindelvagtApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-        home: const HjemSkarm(),
+      home: const HjemSkarm(),
     );
   }
 }
@@ -47,7 +49,7 @@ class HjemSkarm extends StatelessWidget {
               style: TextStyle(fontSize: 22),
             ),
 
-            const Spacer(), // skubber knappen ned mod midten
+            const Spacer(),
 
             // DEN STORE NØDKNAP
             Padding(
@@ -91,27 +93,32 @@ class HjemSkarm extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               child: Row(
                 children: [
-Expanded(
-  child: ElevatedButton(
-    style: ElevatedButton.styleFrom(
-      padding: const EdgeInsets.all(24),
-    ),
-    onPressed: () {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => const TjeklisteSkarm()),
-      );
-    },
-    child: const Text('Tjekliste', style: TextStyle(fontSize: 20)),
-  ),
-),
-const SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         padding: const EdgeInsets.all(24),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const TjeklisteSkarm()),
+                        );
+                      },
+                      child: const Text('Tjekliste', style: TextStyle(fontSize: 20)),
+                    ),
+                  ),
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.all(24),
+                      ),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const SikreOrdSkarm()),
+                        );
+                      },
                       child: const Text('Sikre ord', style: TextStyle(fontSize: 20)),
                     ),
                   ),
