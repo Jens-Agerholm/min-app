@@ -1,0 +1,9 @@
+
+
+Kommandoer:
+
+Gem i 
+
+git add .
+git commit -m "beskrivelse af dagens ændringer"
+git push
