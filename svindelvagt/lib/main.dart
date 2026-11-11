@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'tjekliste.dart';
 void main() {
   runApp(const SvindelvagtApp());
 }
@@ -91,16 +91,21 @@ class HjemSkarm extends StatelessWidget {
               padding: const EdgeInsets.all(24),
               child: Row(
                 children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.all(24),
-                      ),
-                      onPressed: () {},
-                      child: const Text('Tjekliste', style: TextStyle(fontSize: 20)),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
+Expanded(
+  child: ElevatedButton(
+    style: ElevatedButton.styleFrom(
+      padding: const EdgeInsets.all(24),
+    ),
+    onPressed: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const TjeklisteSkarm()),
+      );
+    },
+    child: const Text('Tjekliste', style: TextStyle(fontSize: 20)),
+  ),
+),
+const SizedBox(width: 16),
                   Expanded(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
