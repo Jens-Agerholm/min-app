@@ -1,3 +1,4 @@
+import 'hjaelp.dart';
 import 'package:flutter/material.dart';
 import 'tjekliste.dart';
 import 'sikre_ord.dart';
@@ -71,12 +72,14 @@ class HjemSkarm extends StatelessWidget {
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
-                    // Fase 1: her kommer opkalds-guiden.
-                    // Fase 2: her kobles det centrale nummer på.
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const HjaelpSkarm()),
+                    );
                   },
-                ),
               ),
             ),
+           ),
 
             const Padding(
               padding: EdgeInsets.all(16),
