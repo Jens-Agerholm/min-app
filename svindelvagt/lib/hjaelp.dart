@@ -1,8 +1,16 @@
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
 
 class HjaelpSkarm extends StatelessWidget {
   const HjaelpSkarm({super.key});
-
+  Future<void> _ringOp() async {
+    final uri = Uri(scheme: 'tel', path: '12345678');  // ← TESTNUMMER – udskiftes senere!
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      debugPrint('Kunne ikke starte opkald');
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,22 +51,38 @@ class HjaelpSkarm extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Card(
-                    child: ListTile(
-                      leading: CircleAvatar(
-                        backgroundColor: Colors.red,
-                        child: Text('2', style: TextStyle(fontSize: 24, color: Colors.white)),
-                      ),
-                      title: Text(
-                        'Ring til hjælpelinjen:',
-                        style: TextStyle(fontSize: 22),
-                      ),
-                      subtitle: Text(
-                        'NUMMER KOMMER HER',
-                        style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                    Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Column(
+                        children: [
+                          const ListTile(
+                            leading: CircleAvatar(
+                              backgroundColor: Colors.red,
+                              child: Text('2', style: TextStyle(fontSize: 24, color: Colors.white)),
+                            ),
+                            title: Text(
+                              'Ring til hjælpelinjen:',
+                              style: TextStyle(fontSize: 22),
+                            ),
+                          ),
+                          ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.green,
+                              foregroundColor: Colors.white,
+                              padding: const EdgeInsets.all(20),
+                            ),
+                            icon: const Icon(Icons.call, size: 40),
+                            label: const Text(
+                              'RING NU',
+                              style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+                            ),
+                            onPressed: _ringOp,
+                          ),
+                        ],
                       ),
                     ),
-                  ),
+                  ),  
                   const Card(
                     child: ListTile(
                       leading: CircleAvatar(
